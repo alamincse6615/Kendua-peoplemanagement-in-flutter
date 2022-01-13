@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "349483972924",
+    "project_id": "kendua-271ce",
+    "storage_bucket": "kendua-271ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349483972924:android:6b885a0467e21677798639",
+        "android_client_info": {
+          "package_name": "com.dattakendua.kendua"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349483972924-s2f4qe6b2vqqtjnst8m7ijgfnbp595v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzb3VBmmYvecGn-cC0ilS9QhMZ_crB7xU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349483972924-s2f4qe6b2vqqtjnst8m7ijgfnbp595v8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
