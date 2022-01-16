@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -8,6 +9,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +25,9 @@ class _DashboardState extends State<Dashboard> {
           })
         ],
       ),
-      drawer: Drawer(),
+      drawer: Drawer(
+         child: Center(child: Text(auth.currentUser!.email.toString())),
+      ),
       body: ListView.builder(
           itemCount: 5,
           itemBuilder: (context, index) {
