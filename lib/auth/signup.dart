@@ -25,6 +25,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xff821515),
       appBar: AppBar(
         title: Text('Sign Up to continue'),
       ),
@@ -211,5 +212,6 @@ class _SignUpState extends State<SignUp> {
       return;
     }
     _key.currentState!.save();
+    //osman
   }
 }
