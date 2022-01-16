@@ -61,6 +61,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                   ),
+                  //changed
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
