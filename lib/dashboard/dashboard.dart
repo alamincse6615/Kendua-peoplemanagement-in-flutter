@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -10,12 +11,20 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   FirebaseAuth auth = FirebaseAuth.instance;
+  late DatabaseReference _databaseReference;
+
+
+  @override
+  void initState() {
+    _databaseReference = FirebaseDatabase.instance.reference();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Dashboard"),
         actions: [
+
           PopupMenuButton(itemBuilder: (context) {
             return [
               PopupMenuItem(child: Text("About Us")),

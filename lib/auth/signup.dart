@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kendua/auth/signin.dart';
@@ -25,11 +26,20 @@ class _SignUpState extends State<SignUp> {
   bool passwordreoff = true;
   Icon passwordRetypeIcon = Icon(Icons.visibility_off);
 
+  late DatabaseReference _databaseReference;
+
+
+  @override
+  void initState() {
+    _databaseReference = FirebaseDatabase.instance.reference();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Sign Up to continue'),
+
       ),
       body: FutureBuilder(
         future: firebaseinit(),
@@ -223,8 +233,7 @@ class _SignUpState extends State<SignUp> {
         FirebaseAuth auth = FirebaseAuth.instance;
         UserCredential userCredential =  await auth.createUserWithEmailAndPassword(email: email, password: password);
         if(userCredential.user != null){
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Dashboard()));
+          _saveData(name,email,phonenumber,password,auth.currentUser!.uid);
         }
       }else{
         print("Password cant' match ");
@@ -240,4 +249,21 @@ class _SignUpState extends State<SignUp> {
     FirebaseApp firebaseApp =await Firebase.initializeApp();
     return firebaseApp;
   }
+
+  _saveData(String name, String email, String phn, String password,String uid){
+    Map<dynamic,dynamic> info = {
+      "name":name,
+      "email":email,
+      "phone":phn,
+      "password":password,
+      "uid":uid,
+
+    };
+    _databaseReference.child(uid).set(info);
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Dashboard()));
+  }
+
+
+
 }
