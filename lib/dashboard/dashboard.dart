@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:kendua/profile/profil.dart';
+
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -11,20 +12,13 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   FirebaseAuth auth = FirebaseAuth.instance;
-  late DatabaseReference _databaseReference;
 
-
-  @override
-  void initState() {
-    _databaseReference = FirebaseDatabase.instance.reference();
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Dashboard"),
+        title: Center(child: Text("Dashboard")),
         actions: [
-
           PopupMenuButton(itemBuilder: (context) {
             return [
               PopupMenuItem(child: Text("About Us")),
@@ -35,8 +29,43 @@ class _DashboardState extends State<Dashboard> {
         ],
       ),
       drawer: Drawer(
-         child: Center(child: Text(auth.currentUser!.email.toString())),
-      ),
+          backgroundColor: Color(0xff782fff),
+          child: ListView(
+            children: [
+              UserAccountsDrawerHeader(
+                accountName: Text("osman"),
+                accountEmail: Text("Gmail"),
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      "https://i.pinimg.com/236x/48/a0/72/48a072d70bfc0bb7ed4de85a3aaa2df2.jpg"),
+                ),
+              ),
+              ListTile(
+                title: Text("Home"),
+                leading: Icon(Icons.home),
+              ),
+              ListTile(
+                title: Text("My Profil"),
+                leading: Icon(Icons.person),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MyProfil()));
+                },
+              ),
+              ListTile(
+                title: Text("Share"),
+                leading: Icon(Icons.share_outlined),
+              ),
+              ListTile(
+                title: Text("privacy policy"),
+                leading: Icon(Icons.privacy_tip),
+              ),
+              ListTile(
+                title: Text("Logout"),
+                leading: Icon(Icons.logout_outlined),
+              ),
+            ],
+          )),
       body: ListView.builder(
           itemCount: 5,
           itemBuilder: (context, index) {
@@ -116,4 +145,5 @@ class _DashboardState extends State<Dashboard> {
           }),
     );
   }
+//(child: Text(auth.currentUser!.email.toString())),
 }
