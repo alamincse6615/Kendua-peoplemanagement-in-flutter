@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:kendua/admin/admindashboard.dart';
 import 'package:kendua/auth/signup.dart';
 import 'package:kendua/dashboard/dashboard.dart';
 
@@ -17,6 +18,8 @@ class _SignInState extends State<SignIn> {
   final ctrlpass = TextEditingController();
   bool passwordOff = true;
   Icon passwordIcon = Icon(Icons.visibility_off);
+
+  String adminEmail = "admin@gmail.com";
 
   @override
   Widget build(BuildContext context) {
@@ -138,8 +141,14 @@ class _SignInState extends State<SignIn> {
 
       if(userCredential.user != null){
 
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Dashboard()));
+        if(adminEmail==auth.currentUser!.email){
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AdminDashboard()));
+        }else{
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Dashboard()));
+        }
+
       }
     } else {
       return;

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:kendua/profile/edit.dart';
+import 'package:kendua/dashboard/dashboard.dart';
 
-class MyProfil extends StatefulWidget {
-  const MyProfil({Key? key}) : super(key: key);
+class Edit extends StatefulWidget {
+  const Edit({Key? key}) : super(key: key);
 
   @override
-  _MyProfilState createState() => _MyProfilState();
+  _EditState createState() => _EditState();
 }
 
-class _MyProfilState extends State<MyProfil> {
+class _EditState extends State<Edit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: FutureBuilder(builder: (context, info) {
@@ -19,25 +19,25 @@ class _MyProfilState extends State<MyProfil> {
               height: 20,
             ),
             Stack(
-             children: [
-               Container(
-                 height: MediaQuery.of(context).size.height * .25,
-                 width: MediaQuery.of(context).size.width,
-                 child: Image.network(
-                  "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGVuc3xlbnwwfHwwfHw%3D&w=1000&q=80",
-                   fit: BoxFit.cover,
-                 ),
-               ),
-               Container(
-                 height: MediaQuery.of(context).size.height * .25,
-                 width: MediaQuery.of(context).size.width,
-                 child: CircleAvatar(
-                   radius: 200,
-                   backgroundImage: NetworkImage(
-                       "https://cdn.dribbble.com/users/1934630/screenshots/4944473/media/7a29c5e71e9299af1e0f38ab0583b3de.jpg?compress=1&resize=400x300"),
-                 ),
-               ),
-             ],
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * .25,
+                  width: MediaQuery.of(context).size.width,
+                  child: Image.network(
+                    "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGVuc3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height * .25,
+                  width: MediaQuery.of(context).size.width,
+                  child: CircleAvatar(
+                    radius: 200,
+                    backgroundImage: NetworkImage(
+                        "https://cdn.dribbble.com/users/1934630/screenshots/4944473/media/7a29c5e71e9299af1e0f38ab0583b3de.jpg?compress=1&resize=400x300"),
+                  ),
+                ),
+              ],
             ),
             Container(
               height: MediaQuery.of(context).size.height * .40,
@@ -78,14 +78,14 @@ class _MyProfilState extends State<MyProfil> {
             ),
             RaisedButton(
               color: Colors.green,
-                onPressed:(){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Edit()));
-                },
-                child: Text("Edit",
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) =>Dashboard()));
+              },
+              child: Text("Save",
 
-                  style: TextStyle(color: Color(0xffffffff)),
-                ),
+                style: TextStyle(color: Color(0xffffffff)),
+              ),
 
             )
           ],
