@@ -259,7 +259,7 @@ class _SignUpState extends State<SignUp> {
       "uid":uid,
 
     };
-    _databaseReference.child(uid).set(info);
+    _databaseReference.child("Users").child(uid).set(info);
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => Dashboard()));
   }
