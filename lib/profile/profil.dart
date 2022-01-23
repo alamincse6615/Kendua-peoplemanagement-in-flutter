@@ -49,7 +49,7 @@ class _MyProfilState extends State<MyProfil> {
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         decoration: InputDecoration(
-                          hintText: "Number",
+                          hintText: "number",
                           border: OutlineInputBorder(),
                         ),
                       ),
