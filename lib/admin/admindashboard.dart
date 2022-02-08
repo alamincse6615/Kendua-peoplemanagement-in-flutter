@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kendua/admin/news.dart';
+import 'package:kendua/admin/admin_news_property/newslist.dart';
+import 'package:kendua/admin/admin_users_property/userslist.dart';
 
 class AdminDashboard extends StatefulWidget {
   const AdminDashboard({Key? key}) : super(key: key);
@@ -9,6 +10,16 @@ class AdminDashboard extends StatefulWidget {
 }
 
 class _AdminDashboardState extends State<AdminDashboard> {
+  List<String> topic = [
+    "Users",
+    "News",
+  ];
+
+  List<Color> color = [
+    Colors.blue,
+    Colors.lightBlueAccent
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,31 +28,54 @@ class _AdminDashboardState extends State<AdminDashboard> {
         ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
-          child: GridView.builder(
-              itemCount: 10,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, crossAxisSpacing: 5, mainAxisSpacing: 5),
-              itemBuilder: (context, index) {
-                return InkWell(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.deepPurple,
+          child: Center(
+            child: GridView.builder(
+                itemCount: topic.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2, crossAxisSpacing: 5, mainAxisSpacing: 5),
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: color[index],
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        topic[index],
+                        textAlign: TextAlign.center,
+                        style:
+                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                     ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "news",
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => News()));
-                  },
-                );
-              }),
+                    onTap: () {
+                      if(index==1)
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsList()
+                          )
+                      );
+
+                     /* else if(index==2)
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NewsList()
+                            )
+                        );*/
+
+                      else
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UsersList()
+                            )
+                        );
+                    },
+                  );
+                }),
+          ),
         ));
   }
 }

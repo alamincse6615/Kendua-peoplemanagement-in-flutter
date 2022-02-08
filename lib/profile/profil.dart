@@ -37,7 +37,7 @@ class _MyProfilState extends State<MyProfil> {
                    child: CircleAvatar(
                      radius: 200,
                      backgroundImage: NetworkImage(
-                         "https://cdn.dribbble.com/users/1934630/screenshots/4944473/media/7a29c5e71e9299af1e0f38ab0583b3de.jpg?compress=1&resize=400x300"),
+                         "https://cdn.dribbble.com/admin_users_property/1934630/screenshots/4944473/media/7a29c5e71e9299af1e0f38ab0583b3de.jpg?compress=1&resize=400x300"),
                    ),
                  ),
                ],

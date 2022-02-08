@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class News extends StatefulWidget {
-  const News({Key? key}) : super(key: key);
+class NewsList extends StatefulWidget {
+  const NewsList({Key? key}) : super(key: key);
 
   @override
-  _NewsState createState() => _NewsState();
+  _NewsListState createState() => _NewsListState();
 }
 
-class _NewsState extends State<News> {
+class _NewsListState extends State<NewsList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +25,6 @@ class _NewsState extends State<News> {
             );
           }
       ),
-
     );
   }
 }
